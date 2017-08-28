@@ -42,6 +42,7 @@ class DefaultAcsClient implements IAcsClient
 
     private function doActionImpl($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3)
     {
+        $domain = null;
         if (null == $this->iClientProfile && (null == $iSigner || null == $credential
             || null == $request->getRegionId() || null == $request->getAcceptFormat())) {
             throw new ClientException("No active profile found.", "SDK.InvalidProfile");
